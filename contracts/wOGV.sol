@@ -326,7 +326,7 @@ library Address {
      *
      * Requirements:
      *
-     * - the calling contract must have an ETH balance of at least `value`.
+     * - the calling contract must have an METIS balance of at least `value`.
      * - the called Solidity function must be `payable`.
      *
      * _Available since v3.1._
@@ -745,97 +745,97 @@ interface IStaking {
     function index() external view returns ( uint );
 }
 
-contract wOHM is ERC20 {
+contract wOGV is ERC20 {
     using SafeERC20 for ERC20;
     using Address for address;
     using SafeMath for uint;
 
     address public immutable staking;
-    address public immutable OHM;
-    address public immutable sOHM;
+    address public immutable OGV;
+    address public immutable sOGV;
 
-    constructor( address _staking, address _OHM, address _sOHM ) ERC20( 'Wrapped sOHM', 'wsOHM' ) {
+    constructor( address _staking, address _OGV, address _sOGV ) ERC20( 'Wrapped sOGV', 'wsOGV' ) {
         require( _staking != address(0) );
         staking = _staking;
-        require( _OHM != address(0) );
-        OHM = _OHM;
-        require( _sOHM != address(0) );
-        sOHM = _sOHM;
+        require( _OGV != address(0) );
+        OGV = _OGV;
+        require( _sOGV != address(0) );
+        sOGV = _sOGV;
     }
 
         /**
-        @notice stakes OHM and wraps sOHM
+        @notice stakes OGV and wraps sOGV
         @param _amount uint
         @return uint
      */
-    function wrapFromOHM( uint _amount ) external returns ( uint ) {
-        IERC20( OHM ).transferFrom( msg.sender, address(this), _amount );
+    function wrapFromOGV( uint _amount ) external returns ( uint ) {
+        IERC20( OGV ).transferFrom( msg.sender, address(this), _amount );
 
-        IERC20( OHM ).approve( staking, _amount ); // stake OHM for sOHM
+        IERC20( OGV ).approve( staking, _amount ); // stake OGV for sOGV
         IStaking( staking ).stake( _amount, address(this) );
 
-        uint value = wOHMValue( _amount );
+        uint value = wOGVValue( _amount );
         _mint( msg.sender, value );
         return value;
     }
 
     /**
-        @notice unwrap sOHM and unstake OHM
+        @notice unwrap sOGV and unstake OGV
         @param _amount uint
         @return uint
      */
-    function unwrapToOHM( uint _amount ) external returns ( uint ) {
+    function unwrapToOGV( uint _amount ) external returns ( uint ) {
         _burn( msg.sender, _amount );
         
-        uint value = sOHMValue( _amount );
-        IERC20( sOHM ).approve( staking, value ); // unstake sOHM for OHM
+        uint value = sOGVValue( _amount );
+        IERC20( sOGV ).approve( staking, value ); // unstake sOGV for OGV
         IStaking( staking ).unstake( value, address(this) );
 
-        IERC20( OHM ).transfer( msg.sender, value );
+        IERC20( OGV ).transfer( msg.sender, value );
         return value;
     }
 
     /**
-        @notice wrap sOHM
+        @notice wrap sOGV
         @param _amount uint
         @return uint
      */
-    function wrapFromsOHM( uint _amount ) external returns ( uint ) {
-        IERC20( sOHM ).transferFrom( msg.sender, address(this), _amount );
+    function wrapFromsOGV( uint _amount ) external returns ( uint ) {
+        IERC20( sOGV ).transferFrom( msg.sender, address(this), _amount );
         
-        uint value = wOHMValue( _amount );
+        uint value = wOGVValue( _amount );
         _mint( msg.sender, value );
         return value;
     }
 
     /**
-        @notice unwrap sOHM
+        @notice unwrap sOGV
         @param _amount uint
         @return uint
      */
-    function unwrapTosOHM( uint _amount ) external returns ( uint ) {
+    function unwrapTosOGV( uint _amount ) external returns ( uint ) {
         _burn( msg.sender, _amount );
 
-        uint value = sOHMValue( _amount );
-        IERC20( sOHM ).transfer( msg.sender, value );
+        uint value = sOGVValue( _amount );
+        IERC20( sOGV ).transfer( msg.sender, value );
         return value;
     }
 
     /**
-        @notice converts wOHM amount to sOHM
+        @notice converts wOGV amount to sOGV
         @param _amount uint
         @return uint
      */
-    function sOHMValue( uint _amount ) public view returns ( uint ) {
+    function sOGVValue( uint _amount ) public view returns ( uint ) {
         return _amount.mul( IStaking( staking ).index() ).div( 10 ** decimals() );
     }
 
     /**
-        @notice converts sOHM amount to wOHM
+        @notice converts sOGV amount to wOGV
         @param _amount uint
         @return uint
      */
-    function wOHMValue( uint _amount ) public view returns ( uint ) {
+    function wOGVValue( uint _amount ) public view returns ( uint ) {
         return _amount.mul( 10 ** decimals() ).div( IStaking( staking ).index() );
     }
 

@@ -5,7 +5,7 @@
 // const UniswapV2Pair = require("../../artifacts/contracts/dependencies/holyzeppelin/contracts/protocols/exchanges/uniswap/v2/core/UniswapV2Pair.sol/UniswapV2Pair.json")
 
 
-// describe('OlympusBondingCalculator', 
+// describe('OlygiveBondingCalculator', 
 //     () => {
 
 //     let
@@ -23,7 +23,7 @@
 //     pair,
 //     OlyUniV2CompatiableLPTokenBonding,
 //     olyUniV2CompatiableLPTokenBonding,
-//     OlympusBondingCalculator,
+//     OlygiveBondingCalculator,
 //     olympusBondingCalculator
 
 
@@ -43,11 +43,11 @@
 //         UniswapV2FactoryContract = await ethers.getContractFactory('UniswapV2Factory');
 //         uniFactory = await UniswapV2FactoryContract.deploy( deployer.address );
 
-//         OlympusTreasury = await ethers.getContractFactory('OlympusTreasury');
-//         olympusTreasury = await OlympusTreasury.deploy();
+//         OlygiveTreasury = await ethers.getContractFactory('OlygiveTreasury');
+//         olympusTreasury = await OlygiveTreasury.deploy();
 
-//         OlympusBondingCalculator = await ethers.getContractFactory('OlympusBondingCalculator');
-//         olympusBondingCalculator = await OlympusBondingCalculator.deploy();
+//         OlygiveBondingCalculator = await ethers.getContractFactory('OlygiveBondingCalculator');
+//         olympusBondingCalculator = await OlygiveBondingCalculator.deploy();
 
 //         OlyUniV2CompatiableLPTokenBonding = await ethers.getContractFactory('OlyUniV2CompatiableLPTokenBonding');
 //         olyUniV2CompatiableLPTokenBonding = await OlyUniV2CompatiableLPTokenBonding.deploy();

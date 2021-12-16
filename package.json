@@ -1,7 +1,7 @@
 {
-  "name": "olympus-contracts",
-  "version": "1.0.0",
-  "description": "Smart Contracts for Olympus",
+  "name": "olygive-contracts",
+  "version": "0.0.1",
+  "description": "Smart Contracts for Olygive",
   "directories": {
     "test": "test"
   },
@@ -27,14 +27,5 @@
     "clean": "npx hardhat clean",
     "start": "npx hardhat run scripts/deployAll.js",
     "lint:sol": "solhint -f table contracts/**/*.sol"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/OlympusDAO/olympus-contracts.git"
-  },
-  "author": "",
-  "bugs": {
-    "url": "https://github.com/OlympusDAO/olympus-contracts/issues"
-  },
-  "homepage": "https://github.com/OlympusDAO/olympus-contracts#readme"
+  }
 }

@@ -7,7 +7,7 @@
 // // const { deployContract, loadFixture } = waffle;
 
 // describe(
-//   "PreOlympusSales",
+//   "PreOlygiveSales",
 //   function () {
 
 //     const ONE = 1;
@@ -22,10 +22,10 @@
 //     let saleProceeds;
 
 //     // Contracts
-//     let PreOlympusTokenContract;
+//     let PreOlygiveTokenContract;
 //     let poly;
 
-//     let PreOlympusSaleContract;
+//     let PreOlygiveSaleContract;
 //     let sale;
 
 //     let DAITokenContract;
@@ -52,42 +52,42 @@
 //           saleProceeds
 //         ] = await ethers.getSigners();
 
-//         console.log( "Test::PreOlympus::beforeEach:01 deployer address is %s.", deployer.address );
-//         console.log( "Test::PreOlympus::beforeEach:02 buyer1 address is %s.", buyer1.address );
+//         console.log( "Test::PreOlygive::beforeEach:01 deployer address is %s.", deployer.address );
+//         console.log( "Test::PreOlygive::beforeEach:02 buyer1 address is %s.", buyer1.address );
 
-//         console.log( "Test::PreOlympus::beforeEach:03 Loading PreOlympusToken." );
-//         PreOlympusTokenContract = await ethers.getContractFactory("PreOlympusToken");
+//         console.log( "Test::PreOlygive::beforeEach:03 Loading PreOlygiveToken." );
+//         PreOlygiveTokenContract = await ethers.getContractFactory("PreOlygiveToken");
 
-//         console.log( "Test::PreOlympus::beforeEach:04 Deploying PreOlympusToken." );
-//         poly = await PreOlympusTokenContract.connect( deployer ).deploy();
+//         console.log( "Test::PreOlygive::beforeEach:04 Deploying PreOlygiveToken." );
+//         poly = await PreOlygiveTokenContract.connect( deployer ).deploy();
 //         // await poly.deployed();
-//         console.log( "Test::PreeOlympusSale:beforeEach:05 PreOlympusToken address is %s,", poly.address );
+//         console.log( "Test::PreeOlygiveSale:beforeEach:05 PreOlygiveToken address is %s,", poly.address );
 
-//         console.log( "Test::PreeOlympusSale::beforeEach:06 Loading DAI." );
+//         console.log( "Test::PreeOlygiveSale::beforeEach:06 Loading DAI." );
 //         DAITokenContract = await ethers.getContractFactory("DAI");
 
-//         console.log( "Test::PreeOlympusSale::beforeEach:07 Deploying DAI." );
+//         console.log( "Test::PreeOlygiveSale::beforeEach:07 Deploying DAI." );
 //         dai = await DAITokenContract.connect( deployer ).deploy( 1 );
 //         await dai.deployed();
-//         console.log( "Test::PreeOlympusSale:beforeEach:08 DAI address is %s,", dai.address );
+//         console.log( "Test::PreeOlygiveSale:beforeEach:08 DAI address is %s,", dai.address );
 
         
-//         console.log( "Test::PreeOlympusSale::beforeEach:09 Loading PreOlympusSales." );
-//         PreOlympusSaleContract = await ethers.getContractFactory("PreOlympusSales");
+//         console.log( "Test::PreeOlygiveSale::beforeEach:09 Loading PreOlygiveSales." );
+//         PreOlygiveSaleContract = await ethers.getContractFactory("PreOlygiveSales");
         
-//         console.log( "Test::PreeOlympusSale::beforeEach:10 Deploying PreOlympusSales." );
-//         sale = await PreOlympusSaleContract.connect( deployer ).deploy();
+//         console.log( "Test::PreeOlygiveSale::beforeEach:10 Deploying PreOlygiveSales." );
+//         sale = await PreOlygiveSaleContract.connect( deployer ).deploy();
 //         // await sale.deployed();
-//         console.log( "Test::PreeOlympusSale:beforeEach:11 PreOlympusSale address is %s,", sale.address );
+//         console.log( "Test::PreeOlygiveSale:beforeEach:11 PreOlygiveSale address is %s,", sale.address );
 
         
-//         console.Console( "Test::PreeOlympusSale::beforeEach:12 Initializing OLYIntrinsicCalculator." );
+//         console.Console( "Test::PreeOlygiveSale::beforeEach:12 Initializing OLYIntrinsicCalculator." );
 //         await sale.initialize( poly.address, dai.address, 100, saleProceeds.address );
 
-//         console.Console( "Test::PreeOlympusSale::beforeEach:13 Minting DAI." );
+//         console.Console( "Test::PreeOlygiveSale::beforeEach:13 Minting DAI." );
 //         dai.connect(deployer).mint( buyer1.address, ethers.utils.parseUnits( String( MILLION ), "ether" ) );
 
-//         console.Console( "Test::PreeOlympusSale::beforeEach:13 Minting pOLY." );
+//         console.Console( "Test::PreeOlygiveSale::beforeEach:13 Minting pOLY." );
 //         poly.connect(deployer).mint( sale.address, ethers.utils.parseUnits( String( BILLION ), "ether" ) );
 
 //       }
@@ -100,11 +100,11 @@
 //           "DAIPurchase",
 //           async function() {
 
-//             console.log("Test::PreeOlympusSale::Sale::DAIPurchase:01 buyer1 dai balanceOf.");
+//             console.log("Test::PreeOlygiveSale::Sale::DAIPurchase:01 buyer1 dai balanceOf.");
 //             expect( await dai.connect(deployer).balanceOf( buyer1.address ) )
 //               .to.equal( String( ethers.utils.parseUnits( String( MILLION ), "ether" ) ) );
 
-//             console.log("Test::PreeOlympusSale::Sale::DAIPurchase:02 sale poly balanceOf.");
+//             console.log("Test::PreeOlygiveSale::Sale::DAIPurchase:02 sale poly balanceOf.");
 //             expect( await poly.connect(deployer).balanceOf( sale.address ) )
 //               .to.equal( String( ethers.utils.parseUnits( String( BILLION ), "ether" ) ) );
 
@@ -125,10 +125,10 @@
 
 //             // await sale.connect(deployer).startSale();
             
-//             console.log("Test::PreeOlympusSale::Sale::DAIPurchase:03 Approve sale to sell.");
+//             console.log("Test::PreeOlygiveSale::Sale::DAIPurchase:03 Approve sale to sell.");
 //             await poly.connect(deployer).addApprovedSeller( sale.address );
 
-//             console.log("Test::PreeOlympusSale::Sale::DAIPurchase:04 sale is approvedSeller.");
+//             console.log("Test::PreeOlygiveSale::Sale::DAIPurchase:04 sale is approvedSeller.");
 //             expect( await poly.isApprovedSeller( sale.address ) ).to.equal( true );
 
 //             // await expect( dai.connect(buyer1).approve( sale.address, ethers.utils.parseUnits( String( 100 ), "ether" ) ) )
@@ -142,14 +142,14 @@
 //               .to.changeTokenBalance( poly, buyer1, ethers.utils.parseUnits( String( (MILLION * 100) ), "ether" ) );
 
             
-//               console.log("Test::PreeOlympusSale::Sale::DAIPurchase:05 buyer1 dai balanceOf.");
+//               console.log("Test::PreeOlygiveSale::Sale::DAIPurchase:05 buyer1 dai balanceOf.");
 //               expect( await dai.connect(deployer).balanceOf( buyer1.address ) )
 //                 .to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
 
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
 //             // expect( await poly.connect(buyer1).balanceOf(buyer1.address) ).to.equal( String( ethers.utils.parseUnits( String( 1000 ), "ether" ) ) );
             
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
 //             // expect( await dai.connect(buyer1).balanceOf(buyer1.address) ).to.equal( String( ethers.utils.parseUnits( String( 900 ), "ether" ) ) );
 
 //             /*****************************************************************************************************************************************************/
@@ -160,48 +160,48 @@
 
 //             /******************************************************************************************************************************/
 
-//             // console.log("Test::PreOlympusSaleDeployment::DeploymentSuccess: token name.");
-//             // expect( await poly.name() ).to.equal("PreOlympus");
+//             // console.log("Test::PreOlygiveSaleDeployment::DeploymentSuccess: token name.");
+//             // expect( await poly.name() ).to.equal("PreOlygive");
 
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: token symbol.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: token symbol.");
 //             // expect( await poly.symbol() ).to.equal("pOLY");
 
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: token decimals.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: token decimals.");
 //             // expect( await poly.decimals() ).to.equal(18);
 
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: owner.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: owner.");
 //             // expect( await poly.owner() ).to.equal(deployer.address);
             
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: Confirm minting enabled.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: Confirm minting enabled.");
 //             // expect( await poly.connect( deployer ).allowMinting() ).to.equal( true );
 
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: Confirm seller approval enabled.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: Confirm seller approval enabled.");
 //             // expect( await poly.connect( deployer ).requireSellerApproval() ).to.equal( true );
 
             
             
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: poly is approvedSeller.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: poly is approvedSeller.");
 //             // expect( await poly.isApprovedSeller(poly.address) ).to.equal( true );
             
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
 //             // expect( await poly.isApprovedSeller( ethers.constants.AddressZero ) ).to.equal( true );
             
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
 //             // expect( await poly.isApprovedSeller( buyer1.address ) ).to.equal( false );
             
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
 //             // expect( await poly.isApprovedSeller( buyer2.address ) ).to.equal( false );
 
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: totalSupply.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: totalSupply.");
 //             // expect( await poly.totalSupply() ).to.equal( ethers.utils.parseUnits( String( 1000000000 ), "ether" ) );
 
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: owner balanceOf.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: owner balanceOf.");
 //             // expect( await poly.connect(deployer).balanceOf(deployer.address) ).to.equal( String( ethers.utils.parseUnits( String( 1000000000 ), "ether" ) ) );
 
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
 //             // expect( await poly.connect(deployer).balanceOf(buyer1.address) ).to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
 
-//             // console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
+//             // console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
 //             // expect( await poly.connect(deployer).balanceOf(buyer2.address) ).to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
 //           }
 //         );
@@ -209,59 +209,59 @@
 //     );
 
 //     // describe(
-//     //   "PreOlympusTokenOwnership",
+//     //   "PreOlygiveTokenOwnership",
 //     //   function () {
 //     //     // it( 
 //     //     //   "Minting", 
 //     //     //   async function() {
             
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirm minting enabled.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirm minting enabled.");
 //     //     //     expect( await poly.connect( deployer ).allowMinting() )
 //     //     //       .to.equal( true );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: buyer1 can't mint.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: buyer1 can't mint.");
 //     //     //     await expect( poly.connect(buyer1).mint( ethers.utils.parseUnits( String( 1000000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith("Ownable: caller is not the owner");
             
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: buyer1 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: buyer1 balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(buyer1.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: only owner can mint.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: only owner can mint.");
 //     //     //     await expect( () => poly.connect(deployer).mint( ethers.utils.parseUnits( String( 1000000000 ), "ether" ) ) )
 //     //     //       .to.changeTokenBalance( poly, deployer, ethers.utils.parseUnits( String( 1000000000 ), "ether" ) );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: totalSupply.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: totalSupply.");
 //     //     //     expect( await poly.totalSupply() )
 //     //     //       .to.equal( ethers.utils.parseUnits( String( 2000000000 ), "ether" ) );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: owner balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: owner balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(deployer.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 2000000000 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Disable minting.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Disable minting.");
 //     //     //     await poly.connect( deployer ).disableMinting();
             
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Disabled minting.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Disabled minting.");
 //     //     //     expect( await poly.connect( deployer ).allowMinting() ).to.equal( false );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: owner can't mint.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: owner can't mint.");
 //     //     //     await expect( poly.connect( deployer ).mint( ethers.utils.parseUnits( String( 1000000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Minting has been disabled." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: totalSupply.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: totalSupply.");
 //     //     //     expect( await poly.totalSupply() )
 //     //     //       .to.equal( ethers.utils.parseUnits( String( 2000000000 ), "ether" ) );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: owner balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: owner balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(deployer.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 2000000000 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: buyer1 can't mint.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: buyer1 can't mint.");
 //     //     //     await expect( poly.connect(buyer1).mint(ethers.utils.parseUnits( String( 1000000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Ownable: caller is not the owner" );
             
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: buyer1 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: buyer1 balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(buyer1.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
 //     //     //   }
@@ -270,76 +270,76 @@
 //     // );
 
 //     // describe(
-//     //   "PreOlympusTokenOwnership",
+//     //   "PreOlygiveTokenOwnership",
 //     //   function () {
 
 //     //     // it( 
 //     //     //   "Post-Deployment Transfer", 
 //     //     //   async function() {
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: owner is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: owner is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller(deployer.address) ).to.equal( true );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: poly is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: poly is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller(poly.address) ).to.equal( true );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller( ethers.constants.AddressZero ) ).to.equal( true );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller( buyer1.address ) ).to.equal( false );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller( buyer2.address ) ).to.equal( false );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: totalSupply.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: totalSupply.");
 //     //     //     expect( await poly.totalSupply() ).to.equal( ethers.utils.parseUnits( String( 1000000000 ), "ether" ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: owner balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: owner balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(deployer.address) ).to.equal( String( ethers.utils.parseUnits( String( 1000000000 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(buyer1.address) ).to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(buyer2.address) ).to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: Confirm seller approval required.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: Confirm seller approval required.");
 //     //     //     expect( await poly.requireSellerApproval() ).to.equal( true );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming buyer1 can't transfer to buyer1 because they have no balance.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming buyer1 can't transfer to buyer1 because they have no balance.");
 //     //     //     await expect( poly.connect(buyer1).transfer( buyer1.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Account not approved to trans pOLY." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnershi::Minting: Confirming buyer1 can't transfer to buyer2 because they have no balance.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnershi::Minting: Confirming buyer1 can't transfer to buyer2 because they have no balance.");
 //     //     //     await expect( poly.connect(buyer1).transfer( buyer2.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Account not approved to trans pOLY." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming buyer2 can't transfer to buyer1 because they have no balance.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming buyer2 can't transfer to buyer1 because they have no balance.");
 //     //     //     await expect( poly.connect(buyer2).transfer( buyer1.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Account not approved to trans pOLY." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming buyer2 can't transfer to buyer2 because they have no balance.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming buyer2 can't transfer to buyer2 because they have no balance.");
 //     //     //     await expect( poly.connect(buyer2).transfer( buyer2.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Account not approved to trans pOLY." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming deployer can transfer to buyer1.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming deployer can transfer to buyer1.");
 //     //     //     await expect( () => poly.connect(deployer).transfer( buyer1.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.changeTokenBalance( poly, buyer1, ethers.utils.parseUnits( String( 250000000 ), "ether" ) );
             
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming deployer can transfer to buyer1.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming deployer can transfer to buyer1.");
 //     //     //     await expect( () => poly.connect(deployer).transfer( buyer2.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.changeTokenBalance( poly, buyer2, ethers.utils.parseUnits( String( 250000000 ), "ether" ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: deployer balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: deployer balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(deployer.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 500000000 ), "ether" ) ) );
               
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
 //     //     //     expect( await poly.connect(buyer1).balanceOf(buyer1.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
 //     //     //     expect( await poly.connect(buyer2).balanceOf(buyer2.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) );
 
@@ -350,84 +350,84 @@
 //     //     //   "Approved Seller Transfer", 
 //     //     //   async function() {
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: owner is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: owner is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller(deployer.address) ).to.equal( true );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: poly is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: poly is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller(poly.address) ).to.equal( true );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller( ethers.constants.AddressZero ) ).to.equal( true );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller( buyer1.address ) ).to.equal( false );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller( buyer2.address ) ).to.equal( false );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: totalSupply.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: totalSupply.");
 //     //     //     expect( await poly.totalSupply() ).to.equal( ethers.utils.parseUnits( String( 1000000000 ), "ether" ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: owner balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: owner balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(deployer.address) ).to.equal( String( ethers.utils.parseUnits( String( 1000000000 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(buyer1.address) ).to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(buyer2.address) ).to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
 
     
 
 //     //     //     /*************************************************************************** */
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: Confirm seller approval required.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: Confirm seller approval required.");
 //     //     //     expect( await poly.requireSellerApproval() ).to.equal( true );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming buyer1 can't transfer to buyer1 because they have no balance.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming buyer1 can't transfer to buyer1 because they have no balance.");
 //     //     //     await expect( poly.connect(buyer1).transfer( buyer1.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Account not approved to trans pOLY." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnershi::Minting: Confirming buyer1 can't transfer to buyer2 because they have no balance.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnershi::Minting: Confirming buyer1 can't transfer to buyer2 because they have no balance.");
 //     //     //     await expect( poly.connect(buyer1).transfer( buyer2.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Account not approved to trans pOLY." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming buyer2 can't transfer to buyer1 because they have no balance.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming buyer2 can't transfer to buyer1 because they have no balance.");
 //     //     //     await expect( poly.connect(buyer2).transfer( buyer1.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Account not approved to trans pOLY." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming buyer2 can't transfer to buyer2 because they have no balance.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming buyer2 can't transfer to buyer2 because they have no balance.");
 //     //     //     await expect( poly.connect(buyer2).transfer( buyer2.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Account not approved to trans pOLY." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming deployer can transfer to buyer1.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming deployer can transfer to buyer1.");
 //     //     //     await expect( () => poly.connect(deployer).transfer( buyer1.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.changeTokenBalance( poly, buyer1, ethers.utils.parseUnits( String( 250000000 ), "ether" ) );
             
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming deployer can transfer to buyer1.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming deployer can transfer to buyer1.");
 //     //     //     await expect( () => poly.connect(deployer).transfer( buyer2.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.changeTokenBalance( poly, buyer2, ethers.utils.parseUnits( String( 250000000 ), "ether" ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: deployer balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: deployer balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(deployer.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 500000000 ), "ether" ) ) );
               
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
 //     //     //     expect( await poly.connect(buyer1).balanceOf(buyer1.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
 //     //     //     expect( await poly.connect(buyer2).balanceOf(buyer2.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Enable open trading of pOLY.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Enable open trading of pOLY.");
 //     //     //     await poly.connect( deployer ).allowOpenTrading();
 
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: Confirm seller approval required.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: Confirm seller approval required.");
 //     //     //     expect( await poly.requireSellerApproval() ).to.equal( false );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: only owner can mint.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: only owner can mint.");
 
 //     //     //     expect( await poly.connect(buyer1).transfer( buyer2.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) );
 
@@ -436,10 +436,10 @@
 //     //     //     //   .to.changeTokenBalance( poly, buyer1, ethers.utils.parseUnits( String( 0 ), "ether" ) )
 //     //     //     //   .to.changeTokenBalance( poly, buyer2, ethers.utils.parseUnits( String( 500000000 ), "ether" ) );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(buyer1.address) ).to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(buyer2.address) ).to.equal( String( ethers.utils.parseUnits( String( 500000000 ), "ether" ) ) );
 //     //     //   }
 //     //     // );
@@ -448,80 +448,80 @@
 //     //     //   "Open Transfer", 
 //     //     //   async function() {
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: owner is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: owner is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller(deployer.address) ).to.equal( true );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: poly is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: poly is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller(poly.address) ).to.equal( true );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller( ethers.constants.AddressZero ) ).to.equal( true );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller( buyer1.address ) ).to.equal( false );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: address(0) is approvedSeller.");
 //     //     //     expect( await poly.isApprovedSeller( buyer2.address ) ).to.equal( false );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: totalSupply.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: totalSupply.");
 //     //     //     expect( await poly.totalSupply() ).to.equal( ethers.utils.parseUnits( String( 1000000000 ), "ether" ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: owner balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: owner balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(deployer.address) ).to.equal( String( ethers.utils.parseUnits( String( 1000000000 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(buyer1.address) ).to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(buyer2.address) ).to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: Confirm seller approval required.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: Confirm seller approval required.");
 //     //     //     expect( await poly.requireSellerApproval() ).to.equal( true );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming buyer1 can't transfer to buyer1 because they have no balance.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming buyer1 can't transfer to buyer1 because they have no balance.");
 //     //     //     await expect( poly.connect(buyer1).transfer( buyer1.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Account not approved to trans pOLY." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnershi::Minting: Confirming buyer1 can't transfer to buyer2 because they have no balance.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnershi::Minting: Confirming buyer1 can't transfer to buyer2 because they have no balance.");
 //     //     //     await expect( poly.connect(buyer1).transfer( buyer2.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Account not approved to trans pOLY." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming buyer2 can't transfer to buyer1 because they have no balance.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming buyer2 can't transfer to buyer1 because they have no balance.");
 //     //     //     await expect( poly.connect(buyer2).transfer( buyer1.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Account not approved to trans pOLY." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming buyer2 can't transfer to buyer2 because they have no balance.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming buyer2 can't transfer to buyer2 because they have no balance.");
 //     //     //     await expect( poly.connect(buyer2).transfer( buyer2.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.be.revertedWith( "Account not approved to trans pOLY." );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming deployer can transfer to buyer1.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming deployer can transfer to buyer1.");
 //     //     //     await expect( () => poly.connect(deployer).transfer( buyer1.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.changeTokenBalance( poly, buyer1, ethers.utils.parseUnits( String( 250000000 ), "ether" ) );
             
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Confirming deployer can transfer to buyer1.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Confirming deployer can transfer to buyer1.");
 //     //     //     await expect( () => poly.connect(deployer).transfer( buyer2.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) )
 //     //     //       .to.changeTokenBalance( poly, buyer2, ethers.utils.parseUnits( String( 250000000 ), "ether" ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: deployer balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: deployer balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(deployer.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 500000000 ), "ether" ) ) );
               
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
 //     //     //     expect( await poly.connect(buyer1).balanceOf(buyer1.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
 //     //     //     expect( await poly.connect(buyer2).balanceOf(buyer2.address) )
 //     //     //       .to.equal( String( ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: Enable open trading of pOLY.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: Enable open trading of pOLY.");
 //     //     //     await poly.connect( deployer ).allowOpenTrading();
 
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: Confirm seller approval required.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: Confirm seller approval required.");
 //     //     //     expect( await poly.requireSellerApproval() ).to.equal( false );
 
-//     //     //     console.log("Test::PreOlympusTokenOwnership::Minting: only owner can mint.");
+//     //     //     console.log("Test::PreOlygiveTokenOwnership::Minting: only owner can mint.");
 
 //     //     //     expect( await poly.connect(buyer1).transfer( buyer2.address, ethers.utils.parseUnits( String( 250000000 ), "ether" ) ) );
 
@@ -530,10 +530,10 @@
 //     //     //     //   .to.changeTokenBalance( poly, buyer1, ethers.utils.parseUnits( String( 0 ), "ether" ) )
 //     //     //     //   .to.changeTokenBalance( poly, buyer2, ethers.utils.parseUnits( String( 500000000 ), "ether" ) );
             
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer1 balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(buyer1.address) ).to.equal( String( ethers.utils.parseUnits( String( 0 ), "ether" ) ) );
 
-//     //     //     console.log("Test::PreOlympusTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
+//     //     //     console.log("Test::PreOlygiveTokenDeployment::DeploymentSuccess: buyer2 balanceOf.");
 //     //     //     expect( await poly.connect(deployer).balanceOf(buyer2.address) ).to.equal( String( ethers.utils.parseUnits( String( 500000000 ), "ether" ) ) );
 //     //     //   }
 //     //     // );

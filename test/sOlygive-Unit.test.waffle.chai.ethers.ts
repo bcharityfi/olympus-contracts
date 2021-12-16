@@ -4,7 +4,7 @@ const { solidity, MockProvider, createFixtureLoader } = require('ethereum-waffle
 const { signERC2612Permit } = require('eth-permit');
 
 
-describe('sOlympus', () => {
+describe('sOlygive', () => {
 
     let
       // Used as default deployer for contracts, asks as owner of contracts.
@@ -42,10 +42,10 @@ describe('sOlympus', () => {
 
         [deployer, addr1, addr2, addr3] = await ethers.getSigners();
 
-        OLY = await ethers.getContractFactory('OlympusERC20TOken');
+        OLY = await ethers.getContractFactory('OlygiveERC20TOken');
         oly = await OLY.deploy();
 
-        Staking = await ethers.getContractFactory('OlympusStaking');
+        Staking = await ethers.getContractFactory('OlygiveStaking');
         staking = await Staking.deploy();
 
         Treasury = await ethers.getContractFactory('MockTreasury');
@@ -59,7 +59,7 @@ describe('sOlympus', () => {
 
         await oly.mint(treasury.address, 9000000000000000);
 
-        sOLY = await ethers.getContractFactory('sOlympus');
+        sOLY = await ethers.getContractFactory('sOlygive');
         soly = await sOLY.deploy(staking.address);
         tokenAmount = '1000000000'
     
